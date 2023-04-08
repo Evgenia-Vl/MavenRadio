@@ -12,6 +12,14 @@ public class Radio {
         return nowVolume;
     }
 
+    public void setNowNumber(int newNowNumber) {
+        nowNumber = newNowNumber;
+    }
+
+    public void setNowVolume(int newNowVolume) {
+        nowVolume = newNowVolume;
+    }
+
     public void setToMaxNumber() {
         nowNumber = 9;
     }
@@ -25,7 +33,7 @@ public class Radio {
     }
 
     public void setToMinVolume() {
-        nowNumber = 0;
+        nowVolume = 0;
     }
 
     public void setAcceptableNumber(int newNowNumber) {
@@ -62,35 +70,35 @@ public class Radio {
         }
     }
 
-    public void prevNumber(int newNumber) {
-        if (newNumber == 0) {
+    public void prevNumber() {
+        if (nowNumber == 0) {
             nowNumber = 9;
         } else {
-            nowNumber = newNumber - 1;
+            nowNumber = nowNumber - 1;
         }
     }
 
-    public void nextNumber(int newNumber) {
-        if (newNumber == 9) {
+    public void nextNumber() {
+        if (nowNumber == 9) {
             nowNumber = 0;
         } else {
-            nowNumber = newNumber + 1;
+            nowNumber = nowNumber + 1;
         }
     }
 
-    public void prevVolume(int newVolume) {
-        if (newVolume == 0) {
-            nowVolume = 100;
-        } else {
-            nowVolume = newVolume - 1;
-        }
-    }
-
-    public void nextVolume(int newVolume) {
-        if (newVolume == 100) {
+    public void prevVolume() {
+        if (nowVolume == 0) {
             nowVolume = 0;
         } else {
-            nowVolume = newVolume + 1;
+            nowVolume = nowVolume - 1;
+        }
+    }
+
+    public void nextVolume() {
+        if (nowVolume == 100) {
+            nowVolume = 100;
+        } else {
+            nowVolume = nowVolume + 1;
         }
     }
 }

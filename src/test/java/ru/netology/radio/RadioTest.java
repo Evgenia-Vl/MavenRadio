@@ -77,15 +77,6 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    //  @Test
-    //   public void shouldSetAcceptableNumber() {
-    //      Radio count = new Radio();
-    //      count.setAcceptableNumber(5);
-    //      int expected = 5;
-    //      int actual = count.getNowNumber();
-    //     Assertions.assertEquals(expected, actual);
-    // }
-
     @Test
     public void shouldNotSetVolumeAboveMax() {
         Radio volume = new Radio();
@@ -104,15 +95,6 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    //  @Test
-    //  public void shouldSetAcceptableVolume() {
-    //     Radio volume = new Radio();
-    //     volume.setAcceptableVolume(45);
-    //    int expected = 45;
-    //    int actual = volume.getNowVolume();
-    //    Assertions.assertEquals(expected, actual);
-    // }
-
     @Test
     public void checkAcceptableNumber1() {
         Radio count = new Radio();
@@ -121,7 +103,6 @@ public class RadioTest {
         int actual = count.getNowNumber();
         Assertions.assertEquals(expected, actual);
     }
-
 
     @Test
     public void checkAcceptableNumber2() {
@@ -135,7 +116,8 @@ public class RadioTest {
     @Test
     public void switchPrevNumberInBorder() {
         Radio count = new Radio();
-        count.prevNumber(0);
+        count.setToMinNumber();
+        count.prevNumber();
         int expected = 9;
         int actual = count.getNowNumber();
         Assertions.assertEquals(expected, actual);
@@ -144,7 +126,8 @@ public class RadioTest {
     @Test
     public void switchPrevNumber() {
         Radio count = new Radio();
-        count.prevNumber(4);
+        count.setNowNumber(4);
+        count.prevNumber();
         int expected = 3;
         int actual = count.getNowNumber();
         Assertions.assertEquals(expected, actual);
@@ -153,7 +136,8 @@ public class RadioTest {
     @Test
     public void switchNextNumberInBorder() {
         Radio count = new Radio();
-        count.nextNumber(9);
+        count.setNowNumber(9);
+        count.nextNumber();
         int expected = 0;
         int actual = count.getNowNumber();
         Assertions.assertEquals(expected, actual);
@@ -162,7 +146,8 @@ public class RadioTest {
     @Test
     public void switchNextNumber() {
         Radio count = new Radio();
-        count.nextNumber(6);
+        count.setNowNumber(6);
+        count.nextNumber();
         int expected = 7;
         int actual = count.getNowNumber();
         Assertions.assertEquals(expected, actual);
@@ -189,8 +174,9 @@ public class RadioTest {
     @Test
     public void switchPrevVolumeInBorder() {
         Radio count = new Radio();
-        count.prevVolume(0);
-        int expected = 100;
+        count.setNowVolume(0);
+        count.prevVolume();
+        int expected = 0;
         int actual = count.getNowVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -198,7 +184,8 @@ public class RadioTest {
     @Test
     public void switchPrevVolume() {
         Radio count = new Radio();
-        count.prevVolume(36);
+        count.setNowVolume(36);
+        count.prevVolume();
         int expected = 35;
         int actual = count.getNowVolume();
         Assertions.assertEquals(expected, actual);
@@ -207,8 +194,9 @@ public class RadioTest {
     @Test
     public void switchNextVolumeInBorder() {
         Radio count = new Radio();
-        count.nextVolume(100);
-        int expected = 0;
+        count.setNowVolume(100);
+        count.nextVolume();
+        int expected = 100;
         int actual = count.getNowVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -216,7 +204,8 @@ public class RadioTest {
     @Test
     public void switchNextVolume() {
         Radio count = new Radio();
-        count.nextVolume(59);
+        count.setNowVolume(59);
+        count.nextVolume();
         int expected = 60;
         int actual = count.getNowVolume();
         Assertions.assertEquals(expected, actual);
