@@ -53,7 +53,6 @@ public class Radio {
         this.quantity = quantity;
     }
 
-
     public void setAcceptableNumber(int newNowNumber) {
         if (newNowNumber < minNumber) {
             return;
