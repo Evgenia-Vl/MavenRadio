@@ -18,6 +18,13 @@ public class RadioTest {
     }
 
     @Test
+    public void setNowStationByUser() {
+        Radio count = new Radio(20);
+        count.setNowNumber(15);
+        Assertions.assertEquals(15, count.getNowNumber());
+    }
+
+    @Test
     public void shouldSetNumber() {
         Radio count = new Radio();
         count.setAcceptableNumber(7);

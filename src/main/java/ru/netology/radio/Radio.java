@@ -9,6 +9,14 @@ public class Radio {
     private int nowNumber = minNumber;
     private int nowVolume = minVolume;
 
+    public Radio(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Radio() {
+        this.quantity = quantity;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -43,14 +51,6 @@ public class Radio {
 
     public void setToMinVolume() {
         nowVolume = minVolume;
-    }
-
-    public Radio(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public Radio() {
-        this.quantity = quantity;
     }
 
     public void setAcceptableNumber(int newNowNumber) {
