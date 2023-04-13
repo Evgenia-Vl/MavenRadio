@@ -6,210 +6,298 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
-    public void shouldSetNumber() {
+    public void shouldSetNowNumberBetweenMinAndMax() {
         Radio count = new Radio();
-        count.setAcceptableNumber(7);
-        int expected = 7;
-        int actual = count.getNowNumber();
-        Assertions.assertEquals(expected, actual);
+        count.setNowNumber(7);
+        Assertions.assertEquals(7, count.getNowNumber());
     }
 
     @Test
-    public void shouldSetVolume() {
-        Radio volume = new Radio();
-        volume.setAcceptableVolume(60);
-        int expected = 60;
-        int actual = volume.getNowVolume();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSetToMaxNumber() {
+    public void shouldSetNowNumberBeforeMin() {
         Radio count = new Radio();
-        count.setToMaxNumber();
-        int expected = 9;
-        int actual = count.getNowNumber();
-        Assertions.assertEquals(expected, actual);
+        count.setNowNumber(-3);
+        Assertions.assertEquals(0, count.getNowNumber());
     }
 
     @Test
-    public void shouldSetToMinNumber() {
+    public void shouldSetNowNumberAboveMax() {
         Radio count = new Radio();
-        count.setToMinNumber();
-        int expected = 0;
-        int actual = count.getNowNumber();
-        Assertions.assertEquals(expected, actual);
+        count.setNowNumber(14);
+        Assertions.assertEquals(0, count.getNowNumber());
     }
 
     @Test
-    public void shouldSetToMaxVolume() {
-        Radio volume = new Radio();
-        volume.setToMaxVolume();
-        int expected = 100;
-        int actual = volume.getNowVolume();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSetToMinVolume() {
-        Radio volume = new Radio();
-        volume.setToMinVolume();
-        int expected = 0;
-        int actual = volume.getNowVolume();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldNotSetNumberAboveMax() {
+    public void shouldSetNowNumberBeforeMinBorder() {
         Radio count = new Radio();
-        count.setAcceptableNumber(10);
-        int expected = 0;
-        int actual = count.getNowNumber();
-        Assertions.assertEquals(expected, actual);
+        count.setNowNumber(-1);
+        Assertions.assertEquals(0, count.getNowNumber());
     }
 
     @Test
-    public void shouldNotSetNumberBelowMin() {
-        Radio count = new Radio();
-        count.setAcceptableNumber(-1);
-        int expected = 0;
-        int actual = count.getNowNumber();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldNotSetVolumeAboveMax() {
-        Radio volume = new Radio();
-        volume.setAcceptableVolume(101);
-        int expected = 0;
-        int actual = volume.getNowVolume();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldNotSetVolumeBelowMin() {
-        Radio volume = new Radio();
-        volume.setAcceptableVolume(-1);
-        int expected = 0;
-        int actual = volume.getNowVolume();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void checkAcceptableNumber1() {
-        Radio count = new Radio();
-        count.setAcceptableNumber(8);
-        int expected = 8;
-        int actual = count.getNowNumber();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void checkAcceptableNumber2() {
-        Radio count = new Radio();
-        count.setAcceptableNumber(9);
-        int expected = 9;
-        int actual = count.getNowNumber();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void switchPrevNumberInBorder() {
-        Radio count = new Radio();
-        count.setToMinNumber();
-        count.prevNumber();
-        int expected = 9;
-        int actual = count.getNowNumber();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void switchPrevNumber() {
+    public void shouldSetNowNumberLikeMin() {
         Radio count = new Radio();
         count.setNowNumber(4);
-        count.prevNumber();
-        int expected = 3;
-        int actual = count.getNowNumber();
-        Assertions.assertEquals(expected, actual);
+        count.setNowNumber(0);
+        Assertions.assertEquals(0, count.getNowNumber());
     }
 
     @Test
-    public void switchNextNumberInBorder() {
+    public void shouldSetNowNumberAboveMinBorder() {
+        Radio count = new Radio();
+        count.setNowNumber(1);
+        Assertions.assertEquals(1, count.getNowNumber());
+    }
+
+    @Test
+    public void shouldSetNowNumberBeforeMaxBorder() {
+        Radio count = new Radio();
+        count.setNowNumber(8);
+        Assertions.assertEquals(8, count.getNowNumber());
+    }
+
+    @Test
+    public void shouldSetNowNumberLikeMax() {
+        Radio count = new Radio();
+        count.setNowNumber(9);
+        Assertions.assertEquals(9, count.getNowNumber());
+    }
+
+    @Test
+    public void shouldSetNowNumberAboveMaxBorder() {
+        Radio count = new Radio();
+        count.setNowNumber(10);
+        Assertions.assertEquals(0, count.getNowNumber());
+    }
+
+    @Test
+    public void shouldSetNowVolumeBetweenMinAndMax() {
+        Radio count = new Radio();
+        count.setNowVolume(45);
+        Assertions.assertEquals(45, count.getNowVolume());
+    }
+
+    @Test
+    public void shouldSetNowVolumeBeforeMin() {
+        Radio count = new Radio();
+        count.setNowVolume(-20);
+        Assertions.assertEquals(0, count.getNowVolume());
+    }
+
+    @Test
+    public void shouldSetNowVolumeAboveMax() {
+        Radio count = new Radio();
+        count.setNowVolume(125);
+        Assertions.assertEquals(0, count.getNowVolume());
+    }
+
+    @Test
+    public void shouldSetNowVolumeBeforeMinBorder() {
+        Radio count = new Radio();
+        count.setNowVolume(-1);
+        Assertions.assertEquals(0, count.getNowVolume());
+    }
+
+    @Test
+    public void shouldSetNowVolumeLikeMin() {
+        Radio count = new Radio();
+        count.setNowVolume(56);
+        count.setNowVolume(0);
+        Assertions.assertEquals(0, count.getNowVolume());
+    }
+
+    @Test
+    public void shouldSetNowVolumeAboveMinBorder() {
+        Radio count = new Radio();
+        count.setNowVolume(1);
+        Assertions.assertEquals(1, count.getNowVolume());
+    }
+
+    @Test
+    public void shouldSetNowVolumeBeforeMaxBorder() {
+        Radio count = new Radio();
+        count.setNowVolume(99);
+        Assertions.assertEquals(99, count.getNowVolume());
+    }
+
+    @Test
+    public void shouldSetNowVolumeLikeMax() {
+        Radio count = new Radio();
+        count.setNowVolume(100);
+        Assertions.assertEquals(100, count.getNowVolume());
+    }
+
+    @Test
+    public void shouldSetNowVolumeAboveMaxBorder() {
+        Radio count = new Radio();
+        count.setNowVolume(101);
+        Assertions.assertEquals(0, count.getNowVolume());
+    }
+
+    @Test
+    public void switchPrevNumberInMinBorder() {
+        Radio count = new Radio();
+        count.setNowNumber(0);
+        count.prevNumber();
+        Assertions.assertEquals(9, count.getNowNumber());
+    }
+
+    @Test
+    public void switchPrevNumberAboveMinBorder() {
+        Radio count = new Radio();
+        count.setNowNumber(1);
+        count.prevNumber();
+        Assertions.assertEquals(0, count.getNowNumber());
+    }
+
+    @Test
+    public void switchPrevNumberBetweenMinAndMax() {
+        Radio count = new Radio();
+        count.setNowNumber(5);
+        count.prevNumber();
+        Assertions.assertEquals(4, count.getNowNumber());
+    }
+
+    @Test
+    public void switchPrevNumberInMaxBorder() {
+        Radio count = new Radio();
+        count.setNowNumber(9);
+        count.prevNumber();
+        Assertions.assertEquals(8, count.getNowNumber());
+    }
+
+    @Test
+    public void switchPrevNumberBeforeMaxBorder() {
+        Radio count = new Radio();
+        count.setNowNumber(8);
+        count.prevNumber();
+        Assertions.assertEquals(7, count.getNowNumber());
+    }
+
+    @Test
+    public void switchNextNumberInMinBorder() {
+        Radio count = new Radio();
+        count.setNowNumber(0);
+        count.nextNumber();
+        Assertions.assertEquals(1, count.getNowNumber());
+    }
+
+    @Test
+    public void switchNextNumberAboveMinBorder() {
+        Radio count = new Radio();
+        count.setNowNumber(1);
+        count.nextNumber();
+        Assertions.assertEquals(2, count.getNowNumber());
+    }
+
+    @Test
+    public void switchNextNumberBetweenMinAndMax() {
+        Radio count = new Radio();
+        count.setNowNumber(3);
+        count.nextNumber();
+        Assertions.assertEquals(4, count.getNowNumber());
+    }
+
+    @Test
+    public void switchNextNumberInMaxBorder() {
         Radio count = new Radio();
         count.setNowNumber(9);
         count.nextNumber();
-        int expected = 0;
-        int actual = count.getNowNumber();
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(0, count.getNowNumber());
     }
 
     @Test
-    public void switchNextNumber() {
+    public void switchNextNumberBeforeMaxBorder() {
         Radio count = new Radio();
-        count.setNowNumber(6);
+        count.setNowNumber(8);
         count.nextNumber();
-        int expected = 7;
-        int actual = count.getNowNumber();
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(9, count.getNowNumber());
     }
 
     @Test
-    public void checkAcceptableVolume1() {
-        Radio count = new Radio();
-        count.setAcceptableVolume(77);
-        int expected = 77;
-        int actual = count.getNowVolume();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void checkAcceptableVolume2() {
-        Radio count = new Radio();
-        count.setAcceptableVolume(100);
-        int expected = 100;
-        int actual = count.getNowVolume();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void switchPrevVolumeInBorder() {
+    public void switchPrevVolumeInMinBorder() {
         Radio count = new Radio();
         count.setNowVolume(0);
         count.prevVolume();
-        int expected = 0;
-        int actual = count.getNowVolume();
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(0, count.getNowVolume());
     }
 
     @Test
-    public void switchPrevVolume() {
+    public void switchPrevVolumeAboveMinBorder() {
         Radio count = new Radio();
-        count.setNowVolume(36);
+        count.setNowVolume(1);
         count.prevVolume();
-        int expected = 35;
-        int actual = count.getNowVolume();
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(0, count.getNowVolume());
     }
 
     @Test
-    public void switchNextVolumeInBorder() {
+    public void switchPrevVolumeBetweenMinAndMax() {
+        Radio count = new Radio();
+        count.setNowVolume(67);
+        count.prevVolume();
+        Assertions.assertEquals(66, count.getNowVolume());
+    }
+
+    @Test
+    public void switchPrevVolumeInMaxBorder() {
+        Radio count = new Radio();
+        count.setNowVolume(100);
+        count.prevVolume();
+        Assertions.assertEquals(99, count.getNowVolume());
+    }
+
+    @Test
+    public void switchPrevVolumeBeforeMaxBorder() {
+        Radio count = new Radio();
+        count.setNowVolume(99);
+        count.prevVolume();
+        Assertions.assertEquals(98, count.getNowVolume());
+    }
+
+    @Test
+    public void switchNextVolumeInMinBorder() {
+        Radio count = new Radio();
+        count.setNowVolume(0);
+        count.nextVolume();
+        Assertions.assertEquals(1, count.getNowVolume());
+    }
+
+    @Test
+    public void switchNextVolumeAboveMinBorder() {
+        Radio count = new Radio();
+        count.setNowVolume(1);
+        count.nextVolume();
+        Assertions.assertEquals(2, count.getNowVolume());
+    }
+
+    @Test
+    public void switchNextVolumeBetweenMinAndMax() {
+        Radio count = new Radio();
+        count.setNowVolume(33);
+        count.nextVolume();
+        Assertions.assertEquals(34, count.getNowVolume());
+    }
+
+    @Test
+    public void switchNextVolumeInMaxBorder() {
         Radio count = new Radio();
         count.setNowVolume(100);
         count.nextVolume();
-        int expected = 100;
-        int actual = count.getNowVolume();
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(100, count.getNowVolume());
     }
 
     @Test
-    public void switchNextVolume() {
+    public void switchNextVolumeBeforeMaxBorder() {
         Radio count = new Radio();
-        count.setNowVolume(59);
+        count.setNowVolume(99);
         count.nextVolume();
-        int expected = 60;
-        int actual = count.getNowVolume();
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(100, count.getNowVolume());
+    }
+
+    @Test
+    public void setNowStationByUsers() {
+        Radio count = new Radio(20);
+        count.setNowNumber(15);
+        Assertions.assertEquals(15, count.getNowNumber());
     }
 
 }
-

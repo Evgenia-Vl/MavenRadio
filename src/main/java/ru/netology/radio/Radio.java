@@ -3,6 +3,18 @@ package ru.netology.radio;
 public class Radio {
     private int nowNumber;
     private int nowVolume;
+    private int maxNumber;
+    private int minNumber;
+    private int maxVolume = 100;
+    private int minVolume;
+
+    public Radio() {
+        this.maxNumber = 9;
+    }
+
+    public Radio(int quantity) {
+        this.maxNumber = quantity - 1;
+    }
 
     public int getNowNumber() {
         return nowNumber;
@@ -12,93 +24,55 @@ public class Radio {
         return nowVolume;
     }
 
-    public void setNowNumber(int newNowNumber) {
-        nowNumber = newNowNumber;
-    }
-
-    public void setNowVolume(int newNowVolume) {
-        nowVolume = newNowVolume;
-    }
-
-    public void setToMaxNumber() {
-        nowNumber = 9;
-    }
-
-    public void setToMaxVolume() {
-        nowVolume = 100;
-    }
-
-    public void setToMinNumber() {
-        nowNumber = 0;
-    }
-
-    public void setToMinVolume() {
-        nowVolume = 0;
-    }
-
-    public void setAcceptableNumber(int newNowNumber) {
-        if (newNowNumber < 0) {
+    public void setNowNumber(int nowNumber) {
+        if (nowNumber < minNumber) {
             return;
         }
-        if (newNowNumber > 9) {
+        if (nowNumber > maxNumber) {
             return;
         }
-        nowNumber = newNowNumber;
-
-        if (newNowNumber == 9) {
-            nowNumber = newNowNumber;
-        }
-        if (newNowNumber < 9) {
-            nowNumber = newNowNumber;
-        }
+        this.nowNumber = nowNumber;
     }
 
-    public void setAcceptableVolume(int newNowVolume) {
-        if (newNowVolume < 0) {
+    public void setNowVolume(int nowVolume) {
+        if (nowVolume < minVolume) {
             return;
         }
-        if (newNowVolume > 100) {
+        if (nowVolume > maxVolume) {
             return;
         }
-        nowVolume = newNowVolume;
-
-        if (newNowVolume == 100) {
-            nowVolume = newNowVolume;
-        }
-        if (newNowVolume < 100) {
-            nowVolume = newNowVolume;
-        }
+        this.nowVolume = nowVolume;
     }
 
     public void prevNumber() {
-        if (nowNumber == 0) {
-            nowNumber = 9;
+        if (nowNumber != minNumber) {
+            nowNumber--;
         } else {
-            nowNumber = nowNumber - 1;
+            nowNumber = maxNumber;
         }
     }
 
     public void nextNumber() {
-        if (nowNumber == 9) {
-            nowNumber = 0;
+        if (nowNumber != maxNumber) {
+            nowNumber++;
         } else {
-            nowNumber = nowNumber + 1;
+            nowNumber = minNumber;
         }
     }
 
     public void prevVolume() {
-        if (nowVolume == 0) {
-            nowVolume = 0;
+        if (nowVolume != minVolume) {
+            nowVolume--;
         } else {
-            nowVolume = nowVolume - 1;
+            nowVolume = minVolume;
         }
     }
 
     public void nextVolume() {
-        if (nowVolume == 100) {
-            nowVolume = 100;
+        if (nowVolume != maxVolume) {
+            nowVolume++;
         } else {
-            nowVolume = nowVolume + 1;
+            nowVolume = maxVolume;
         }
     }
 }
